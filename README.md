@@ -11,3 +11,16 @@
 ```sh
 gleam add shakespeare
 ```
+
+```gleam
+import gleam/io
+import gleam/erlang/process
+import shakespeare/actors/periodic
+
+pub fn main() {
+  let ping = fn() { io.println("Pong!") }
+
+  periodic.start(do: ping, every: periodic.Ms(1000))
+
+  process.sleep_forever()
+}```
